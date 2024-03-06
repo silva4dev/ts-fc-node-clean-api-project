@@ -5,7 +5,7 @@ export interface InputCreateCustomerDto {
     city: string;
     number: number;
     zip: string;
-  }
+  };
 }
 
 export interface OutputCreateCustomerDto {
@@ -16,5 +16,5 @@ export interface OutputCreateCustomerDto {
     city: string;
     number: number;
     zip: string;
-  }
+  };
 }
