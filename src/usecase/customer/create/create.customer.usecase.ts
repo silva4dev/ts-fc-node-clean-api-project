@@ -35,6 +35,6 @@ export default class CreateCustomerUseCase {
         number: customer.Address.number,
         zip: customer.Address.zip,
       },
-    }
+    };
   }
 }
