@@ -2,7 +2,7 @@ import Product from "../../../domain/product/entity/product";
 import ProductRepositoryInterface from "../../../domain/product/repository/product-repository.interface";
 import FindProductUseCase from "./find.product.usecase";
 
-describe("Unit test find customer use case", () => {
+describe("Unit test find product use case", () => {
   let product: Product;
   let MockRepository: () => ProductRepositoryInterface;
 
