@@ -23,9 +23,9 @@ describe("Unit test create product use case", () => {
 
   it("should create a product", async () => {
     const productRepository = MockRepository();
-    const createProductUseCase = new CreateProductUseCase(productRepository);
+    const usecase = new CreateProductUseCase(productRepository);
 
-    const output = await createProductUseCase.execute(input);
+    const output = await usecase.execute(input);
 
     expect(output).toEqual({
       id: expect.any(String),
@@ -36,27 +36,25 @@ describe("Unit test create product use case", () => {
 
   it("should throw an error when name is missing", async () => {
     const productRepository = MockRepository();
-    const createProductUseCase = new CreateProductUseCase(productRepository);
+    const usecase = new CreateProductUseCase(productRepository);
     input.name = "";
-    await expect(createProductUseCase.execute(input)).rejects.toThrow(
-      "Name is required"
-    );
+    await expect(usecase.execute(input)).rejects.toThrow("Name is required");
   });
 
   it("should throw an error when price is less than zero", async () => {
     const productRepository = MockRepository();
-    const createProductUseCase = new CreateProductUseCase(productRepository);
+    const usecase = new CreateProductUseCase(productRepository);
     input.price = -1;
-    await expect(createProductUseCase.execute(input)).rejects.toThrow(
+    await expect(usecase.execute(input)).rejects.toThrow(
       "Price must be greater than zero"
     );
   });
 
   it("should throw an error when type is missing", async () => {
     const productRepository = MockRepository();
-    const createProductUseCase = new CreateProductUseCase(productRepository);
+    const usecase = new CreateProductUseCase(productRepository);
     input.type = "";
-    await expect(createProductUseCase.execute(input)).rejects.toThrow(
+    await expect(usecase.execute(input)).rejects.toThrow(
       "Product type not supported"
     );
   });
