@@ -1,25 +1,31 @@
+import CustomerRepositoryInterface from "../../../domain/customer/repository/customer-repository.interface";
+import { InputCreateCustomerDto } from "./create.customer.dto";
 import CreateCustomerUseCase from "./create.customer.usecase";
 
-const input = {
-  name: "John Doe",
-  address: {
-    street: "Street",
-    number: 123,
-    zip: "Zip",
-    city: "City",
-  },
-};
-
-const MockRepository = () => {
-  return {
-    find: jest.fn(),
-    findAll: jest.fn(),
-    create: jest.fn(),
-    update: jest.fn(),
-  };
-};
-
 describe("Unit test create customer use case", () => {
+  let input: InputCreateCustomerDto;
+  let MockRepository: () => CustomerRepositoryInterface;
+
+  beforeEach(() => {
+    input = {
+      name: "John Doe",
+      address: {
+        street: "Street",
+        number: 123,
+        zip: "Zip",
+        city: "City",
+      },
+    };
+    MockRepository = () => {
+      return {
+        find: jest.fn(),
+        findAll: jest.fn(),
+        create: jest.fn(),
+        update: jest.fn(),
+      };
+    };
+  });
+
   it("should create a customer", async () => {
     const customerRepository = MockRepository();
     const customerCreateUseCase = new CreateCustomerUseCase(customerRepository);
